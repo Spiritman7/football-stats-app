@@ -1,0 +1,5 @@
+.env
+old_scripts/
+creds.py
+test_env.ipynb
+.ipynb_checkpoints
