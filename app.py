@@ -8,7 +8,8 @@ import requests
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
 import os
-import creds
+# import creds
+# import config
 from PIL import Image
 import plotly.express as px
 import plotly.io as pio
@@ -23,6 +24,14 @@ st.set_page_config(page_title="Football App",
          'Report a bug': "https://www.extremelycoolapp.com/bug",
          'About': "# This is a header. This is an *extremely* cool app!" }    
 )
+
+
+API_KEY = os.getenv("API_KEY")
+API_HOST = os.getenv("API_HOST")
+STANDINGS_URL = os.getenv("STANDINGS_URL")
+TOP_GOAL_SCORERS_URL = os.getenv("TOP_GOAL_SCORERS_URL")
+TOP_ASSISTS_URL = os.getenv("TOP_ASSISTS_URL")
+
 
 # Hide Streamlit's default main menu & footer notes
 hide_streamlit_style = """
@@ -49,6 +58,11 @@ st.write("""
 
 """)
 
+
+
+
+
+# load_dotenv()
 
 
 # Load animations via Lottie website
@@ -82,11 +96,11 @@ with st.container():
             ############################################# 1. PREMIER LEAGUE ##############################################
            if league_table_options == "Premier League":
                league_id = "39"
-               endpoint_url = "https://api-football-v1.p.rapidapi.com/v3/standings"
+               endpoint_url = STANDINGS_URL
                query_string = {"season":"2021","league":league_id}
                headers = {
-               'x-rapidapi-host': "api-football-v1.p.rapidapi.com",
-               'x-rapidapi-key': creds.api_key
+               'x-rapidapi-host': API_HOST,
+               'x-rapidapi-key': API_KEY
                }
                response = requests.request("GET", endpoint_url, headers=headers, params=query_string)
                e = response.json()['response'] 
@@ -119,10 +133,10 @@ with st.container():
             ############################################# 2. GERMAN BUNDESLIGA ##############################################               
            if league_table_options == "Bundesliga":
                league_id = "78"
-               endpoint_url = "https://api-football-v1.p.rapidapi.com/v3/standings"
+               endpoint_url = STANDINGS_URL
                query_string = {"season":"2021","league":league_id}
                headers = {
-               'x-rapidapi-host': "api-football-v1.p.rapidapi.com",
+               'x-rapidapi-host': API_HOST,
                'x-rapidapi-key':  "5883cc35b5msh2fa28b6451a6f1cp15299cjsnea73454ab5ff"
                }
                response = requests.request("GET", endpoint_url, headers=headers, params=query_string)
@@ -156,10 +170,10 @@ with st.container():
             ####################################### 3. LA LIGA ##############################################
            if league_table_options == "La Liga":
                league_id = "140"
-               endpoint_url = "https://api-football-v1.p.rapidapi.com/v3/standings"
+               endpoint_url = STANDINGS_URL
                query_string = {"season":"2021","league":league_id}
                headers = {
-               'x-rapidapi-host': "api-football-v1.p.rapidapi.com",
+               'x-rapidapi-host': API_HOST,
                'x-rapidapi-key':  "5883cc35b5msh2fa28b6451a6f1cp15299cjsnea73454ab5ff"
                }
                response = requests.request("GET", endpoint_url, headers=headers, params=query_string)
@@ -193,10 +207,10 @@ with st.container():
             ####################################### 4. SERIE A ##############################################            
            if league_table_options == "Serie A":
                league_id = "135"
-               endpoint_url = "https://api-football-v1.p.rapidapi.com/v3/standings"
+               endpoint_url = STANDINGS_URL
                query_string = {"season":"2021","league":league_id}
                headers = {
-               'x-rapidapi-host': "api-football-v1.p.rapidapi.com",
+               'x-rapidapi-host': API_HOST,
                'x-rapidapi-key':  "5883cc35b5msh2fa28b6451a6f1cp15299cjsnea73454ab5ff"
                }
                response = requests.request("GET", endpoint_url, headers=headers, params=query_string)
@@ -230,10 +244,10 @@ with st.container():
             ####################################### 5. LIGUE 1 ##############################################       
            if league_table_options == "Ligue 1":
                league_id = "61"
-               endpoint_url = "https://api-football-v1.p.rapidapi.com/v3/standings"
+               endpoint_url = STANDINGS_URL
                query_string = {"season":"2021","league":league_id}
                headers = {
-               'x-rapidapi-host': "api-football-v1.p.rapidapi.com",
+               'x-rapidapi-host': API_HOST,
                'x-rapidapi-key':  "5883cc35b5msh2fa28b6451a6f1cp15299cjsnea73454ab5ff"
                }
                response = requests.request("GET", endpoint_url, headers=headers, params=query_string)
@@ -333,11 +347,11 @@ with st.container():
             ############################################# 1. PREMIER LEAGUE ##############################################
             if top_goal_scorer_options == "Premier League":
                 league_id = "39"
-                endpoint_url = "https://api-football-v1.p.rapidapi.com/v3/players/topscorers"
+                endpoint_url = TOP_GOAL_SCORERS_URL
                 query_string = {"season":"2021","league":league_id}
                 headers = {
-                'x-rapidapi-host': "api-football-v1.p.rapidapi.com",
-                'x-rapidapi-key': creds.api_key
+                'x-rapidapi-host': API_HOST,
+                'x-rapidapi-key': API_KEY
                 }
                 response = requests.request("GET", endpoint_url, headers=headers, params=query_string)
                 e = response.json()['response']
@@ -362,11 +376,11 @@ with st.container():
             ############################################# 2. GERMAN BUNDESLIGA ##############################################
             if top_goal_scorer_options == "Bundesliga":
                 league_id = "78"
-                endpoint_url = "https://api-football-v1.p.rapidapi.com/v3/players/topscorers"
+                endpoint_url = TOP_GOAL_SCORERS_URL
                 query_string = {"season":"2021","league":league_id}
                 headers = {
-                'x-rapidapi-host': "api-football-v1.p.rapidapi.com",
-                'x-rapidapi-key': creds.api_key
+                'x-rapidapi-host': API_HOST,
+                'x-rapidapi-key': API_KEY
                 }
                 response = requests.request("GET", endpoint_url, headers=headers, params=query_string)
                 e = response.json()['response']
@@ -391,11 +405,11 @@ with st.container():
             ####################################### 3. LA LIGA ##############################################
             if top_goal_scorer_options == "La Liga":
                 league_id = "140"
-                endpoint_url = "https://api-football-v1.p.rapidapi.com/v3/players/topscorers"
+                endpoint_url = TOP_GOAL_SCORERS_URL
                 query_string = {"season":"2021","league":league_id}
                 headers = {
-                'x-rapidapi-host': "api-football-v1.p.rapidapi.com",
-                'x-rapidapi-key': creds.api_key
+                'x-rapidapi-host': API_HOST,
+                'x-rapidapi-key': API_KEY
                 }
                 response = requests.request("GET", endpoint_url, headers=headers, params=query_string)
                 e = response.json()['response']
@@ -420,11 +434,11 @@ with st.container():
             ####################################### 4. SERIE A ##############################################
             if top_goal_scorer_options == "Serie A":
                 league_id = "135"
-                endpoint_url = "https://api-football-v1.p.rapidapi.com/v3/players/topscorers"
+                endpoint_url = TOP_GOAL_SCORERS_URL
                 query_string = {"season":"2021","league":league_id}
                 headers = {
-                'x-rapidapi-host': "api-football-v1.p.rapidapi.com",
-                'x-rapidapi-key': creds.api_key
+                'x-rapidapi-host': API_HOST,
+                'x-rapidapi-key': API_KEY
                 }
                 response = requests.request("GET", endpoint_url, headers=headers, params=query_string)
                 e = response.json()['response']
@@ -450,11 +464,11 @@ with st.container():
             ####################################### 5. LIGUE 1 ##############################################
             if top_goal_scorer_options == "Ligue 1":
                 league_id = "61"
-                endpoint_url = "https://api-football-v1.p.rapidapi.com/v3/players/topscorers"
+                endpoint_url = TOP_GOAL_SCORERS_URL
                 query_string = {"season":"2021","league":league_id}
                 headers = {
-                'x-rapidapi-host': "api-football-v1.p.rapidapi.com",
-                'x-rapidapi-key': creds.api_key
+                'x-rapidapi-host': API_HOST,
+                'x-rapidapi-key': API_KEY
                 }
                 response = requests.request("GET", endpoint_url, headers=headers, params=query_string)
                 e = response.json()['response']
@@ -578,11 +592,11 @@ with st.container():
             ############################################# 1. PREMIER LEAGUE ##############################################
             if top_assists_options == "Premier League":
                 league_id = "39"
-                endpoint_url = "https://api-football-v1.p.rapidapi.com/v3/players/topassists"
+                endpoint_url = TOP_ASSISTS_URL
                 query_string = {"season":"2021","league":league_id}
                 headers = {
-                'x-rapidapi-host': "api-football-v1.p.rapidapi.com",
-                'x-rapidapi-key': creds.api_key
+                'x-rapidapi-host': API_HOST,
+                'x-rapidapi-key': API_KEY
                 }
                 response = requests.request("GET", endpoint_url, headers=headers, params=query_string)
                 e = response.json()['response']
@@ -606,11 +620,11 @@ with st.container():
             ############################################# 2. GERMAN BUNDESLIGA ##############################################
             if top_assists_options == "Bundesliga":
                 league_id = "78"
-                endpoint_url = "https://api-football-v1.p.rapidapi.com/v3/players/topassists"
+                endpoint_url = TOP_ASSISTS_URL
                 query_string = {"season":"2021","league":league_id}
                 headers = {
-                'x-rapidapi-host': "api-football-v1.p.rapidapi.com",
-                'x-rapidapi-key': creds.api_key
+                'x-rapidapi-host': API_HOST,
+                'x-rapidapi-key': API_KEY
                 }
                 response = requests.request("GET", endpoint_url, headers=headers, params=query_string)
                 e = response.json()['response']
@@ -634,11 +648,11 @@ with st.container():
             ####################################### 3. LA LIGA ##############################################
             if top_assists_options == "La Liga":
                 league_id = "140"
-                endpoint_url = "https://api-football-v1.p.rapidapi.com/v3/players/topassists"
+                endpoint_url = TOP_ASSISTS_URL
                 query_string = {"season":"2021","league":league_id}
                 headers = {
-                'x-rapidapi-host': "api-football-v1.p.rapidapi.com",
-                'x-rapidapi-key': creds.api_key
+                'x-rapidapi-host': API_HOST,
+                'x-rapidapi-key': API_KEY
                 }
                 response = requests.request("GET", endpoint_url, headers=headers, params=query_string)
                 e = response.json()['response']
@@ -662,11 +676,11 @@ with st.container():
             ####################################### 4. SERIE A ##############################################
             if top_assists_options == "Serie A":
                 league_id = "135"
-                endpoint_url = "https://api-football-v1.p.rapidapi.com/v3/players/topassists"
+                endpoint_url = TOP_ASSISTS_URL
                 query_string = {"season":"2021","league":league_id}
                 headers = {
-                'x-rapidapi-host': "api-football-v1.p.rapidapi.com",
-                'x-rapidapi-key': creds.api_key
+                'x-rapidapi-host': API_HOST,
+                'x-rapidapi-key': API_KEY
                 }
                 response = requests.request("GET", endpoint_url, headers=headers, params=query_string)
                 e = response.json()['response']
@@ -693,11 +707,11 @@ with st.container():
             ####################################### 5. LIGUE 1 ##############################################
             if top_assists_options == "Ligue 1":
                 league_id = "61"
-                endpoint_url = "https://api-football-v1.p.rapidapi.com/v3/players/topassists"
+                endpoint_url = TOP_ASSISTS_URL
                 query_string = {"season":"2021","league":league_id}
                 headers = {
-                'x-rapidapi-host': "api-football-v1.p.rapidapi.com",
-                'x-rapidapi-key': creds.api_key
+                'x-rapidapi-host': API_HOST,
+                'x-rapidapi-key': API_KEY
                 }
                 response = requests.request("GET", endpoint_url, headers=headers, params=query_string)
                 e = response.json()['response']
