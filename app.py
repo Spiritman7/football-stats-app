@@ -362,6 +362,7 @@ with st.container():
                 final_df['goals'] = final_df['total'].astype(int)
                 final_df = final_df.drop(['total'], axis=1)
                 final_df = final_df.drop(['name'], axis=1)
+                final_df = final_df[['player', 'age', 'nationality', 'goals']]
                 final_df.index = np.arange(1, len(final_df)+1)
                 final_df['league'] = 'Premier League'
                 top_goals_df = final_df
@@ -391,6 +392,7 @@ with st.container():
                 final_df['goals'] = final_df['total'].astype(int)
                 final_df = final_df.drop(['total'], axis=1)
                 final_df = final_df.drop(['name'], axis=1)
+                final_df = final_df[['player', 'age', 'nationality', 'goals']]
                 final_df.index = np.arange(1, len(final_df)+1)
                 final_df['league'] = 'Bundesliga'
                 top_goals_df = final_df  
@@ -420,6 +422,7 @@ with st.container():
                 final_df['goals'] = final_df['total'].astype(int)
                 final_df = final_df.drop(['total'], axis=1)
                 final_df = final_df.drop(['name'], axis=1)
+                final_df = final_df[['player', 'age', 'nationality', 'goals']]
                 final_df.index = np.arange(1, len(final_df)+1)
                 final_df['league'] = 'La Liga'
                 top_goals_df = final_df 
@@ -450,6 +453,7 @@ with st.container():
                 final_df['goals'] = final_df['total'].astype(int)
                 final_df = final_df.drop(['total'], axis=1)
                 final_df = final_df.drop(['name'], axis=1)
+                final_df = final_df[['player', 'age', 'nationality', 'goals']]
                 final_df.index = np.arange(1, len(final_df)+1)
                 final_df['league'] = 'Serie A'
                 top_goals_df = final_df 
@@ -480,6 +484,7 @@ with st.container():
                 final_df['goals'] = final_df['total'].astype(int)
                 final_df = final_df.drop(['total'], axis=1)
                 final_df = final_df.drop(['name'], axis=1)
+                final_df = final_df[['player', 'age', 'nationality', 'goals']]
                 final_df.index = np.arange(1, len(final_df)+1)
                 final_df['league'] = 'Ligue 1'
                 top_goals_df = final_df    
@@ -606,6 +611,7 @@ with st.container():
                 final_df['assists'] = final_df['assists'].astype(int)
                 final_df['player'] = final_df['name']
                 final_df = final_df.drop(['name'], axis=1)
+                final_df = final_df[['player', 'age', 'nationality', 'assists']]
                 final_df.index = np.arange(1, len(final_df)+1)
                 final_df['league'] = 'Premier League'
                 top_assists_df = final_df
@@ -633,7 +639,8 @@ with st.container():
                 final_df = df_concat[['name', 'age', 'nationality', 'assists']]
                 final_df['assists'] = final_df['assists'].astype(int)
                 final_df['player'] = final_df['name']
-                final_df = final_df.drop(['name'], axis=1)                
+                final_df = final_df.drop(['name'], axis=1)
+                final_df = final_df[['player', 'age', 'nationality', 'assists']]                
                 final_df.index = np.arange(1, len(final_df)+1)
                 final_df['league'] = 'Bundesliga'
                 top_assists_df = final_df  
@@ -662,6 +669,7 @@ with st.container():
                 final_df['assists'] = final_df['assists'].astype(int)
                 final_df['player'] = final_df['name']
                 final_df = final_df.drop(['name'], axis=1)
+                final_df = final_df[['player', 'age', 'nationality', 'assists']]
                 final_df.index = np.arange(1, len(final_df)+1)
                 final_df['league'] = 'La Liga'
                 top_assists_df = final_df 
@@ -693,6 +701,7 @@ with st.container():
                 final_df['assists'] = final_df['assists'].astype(int)
                 final_df['player'] = final_df['name']
                 final_df = final_df.drop(['name'], axis=1)
+                final_df = final_df[['player', 'age', 'nationality', 'assists']]
                 final_df.index = np.arange(1, len(final_df)+1)
                 final_df['league'] = 'Serie A'
                 top_assists_df = final_df 
@@ -724,6 +733,7 @@ with st.container():
                 final_df['assists'] = final_df['assists'].astype(int)
                 final_df['player'] = final_df['name']
                 final_df = final_df.drop(['name'], axis=1)
+                final_df = final_df[['player', 'age', 'nationality', 'assists']]
                 final_df.index = np.arange(1, len(final_df)+1)
                 final_df['league'] = 'Ligue 1'
                 top_assists_df = final_df    
